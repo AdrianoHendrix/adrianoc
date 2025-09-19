@@ -1,8 +1,42 @@
---Listar todos Clientes que não tenham realizado uma compra;
 USE Sales
+
+--Listar todos Clientes que não tenham realizado uma compra;
 SELECT * FROM customer AS 'CS'
 INNER JOIN orders AS 'OD'
 ON CS.customer_id = OD.customer_id
-WHERE OD.order_status = null
+WHERE OD.order_status IS NULL
+
+
+--Listar os Produtos que não tenham sido comprados;
+
+SELECT * FROM orders_items AS 'OI'
+INNER JOIN orders AS 'OD'
+ON OI.order_id = OD.order_id 
+WHERE OI.order_id IS NULL
+
+--Listar os Produtos sem Estoque;
+USE Production
+SELECT * FROM products 	AS 'PD'
+INNER JOIN stocks AS 'ST'
+ON PD.product_id = ST.product_id
+WHERE ST.quantity > 0
+
+--Agrupar a quantidade de vendas que uma determinada Marca por Loja
+SELECT DISTINCT(BD.brand_id), * FROM Production..brands AS 'BD'
+INNER JOIN Production..products AS 'PR'
+ON BD.brand_id = PR.brand_id
+INNER JOIN Order AS 'OD'
+INNER JOIN stores AS 'SR'
+ON OD.store_id = SR.store_id
+GROUP BY SR.store_id
+
+--Listar os Funcionarios que não estejam relacionados a um Pedido.
+USE Sales
+SELECT * FROM staffs AS 'SF'
+INNER JOIN orders AS 'OD'
+ON SF.staff_id = OD.staff_id
+WHERE SF.staff_id NOT HAVING OD.staff_id
+
+
 
 
