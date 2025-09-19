@@ -1,3 +1,4 @@
+--Listar todos Clientes que não tenham realizado uma compra;
 USE Sales
 SELECT * FROM customer AS 'CS'
 INNER JOIN orders AS 'OD'
