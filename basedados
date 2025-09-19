@@ -21,7 +21,7 @@ INNER JOIN stocks AS 'ST'
 ON PD.product_id = ST.product_id
 WHERE ST.quantity > 0
 
---Agrupar a quantidade de vendas que uma determinada Marca por Loja
+--Agrupar a quantidade de vendas que uma determinada Marca por Loja;
 SELECT DISTINCT(BD.brand_id), * FROM Production..brands AS 'BD'
 INNER JOIN Production..products AS 'PR'
 ON BD.brand_id = PR.brand_id
