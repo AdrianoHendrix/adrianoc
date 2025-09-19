@@ -30,7 +30,7 @@ INNER JOIN stores AS 'SR'
 ON OD.store_id = SR.store_id
 GROUP BY SR.store_id
 
---Listar os Funcionarios que não estejam relacionados a um Pedido.
+--Listar os Funcionarios que não estejam relacionados a um Pedido;
 USE Sales
 SELECT * FROM staffs AS 'SF'
 INNER JOIN orders AS 'OD'
