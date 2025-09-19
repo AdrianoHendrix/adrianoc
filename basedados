@@ -1,1 +1,7 @@
-USE 
+USE Sales
+SELECT * FROM customer AS 'CS'
+INNER JOIN orders AS 'OD'
+ON CS.customer_id = OD.customer_id
+WHERE OD.order_status = null
+
+
